@@ -168,13 +168,25 @@ module.exports = {
             __TEST__: false,
             __PRO__: false
         }),
-        new HtmlWebpackPlugin({
-            title: '1111',
-            template:'index.html',
-        }),
 
         // 以下两个配合react-hot-loader实现热加载
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+
+        // 引用dll打包出的公共模块
+        new webpack.DllReferencePlugin({
+			context: ".",
+			manifest: require("./dist/vendor-manifest.json") // eslint-disable-line
+		}),
+
+        new HtmlWebpackPlugin({
+            title: 'Hot Module Replacement',
+            template:'index.html',
+            manifest:'dist/vendor-1.0.0.js',
+            // 本来dllPlugin插件打包的js是无法通过HtmlWebpackPlugin插件直接插入到html里的，解决方案是：在HtmlWebpackPlugin的options增加一个自定义配置项manifest，然后html里检测是否有此配置项
+            // <% if (htmlWebpackPlugin.options.manifest) { %>
+            //   <script type="text/javascript" src="<%=htmlWebpackPlugin.options.manifest %>"></script>
+            //   <% } %>
+        }),
     ]
 };
