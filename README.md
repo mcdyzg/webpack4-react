@@ -7,6 +7,7 @@
 - redux
 - React
 - React-Router-Dom
+- fetch(whatwg-fetch)
 
 特性：
 
