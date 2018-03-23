@@ -159,6 +159,12 @@ module.exports = {
             // json免配置，直接可以import并且支持tree-shaking
         ]
     },
+    externals:{
+       'react':'var React',
+       'react-dom':'var ReactDOM',
+       'moment':'moment',
+       'antd':'var antd',
+   },
     plugins: [
         new webpack.DefinePlugin({
             // 'process.env': {

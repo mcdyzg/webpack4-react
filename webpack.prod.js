@@ -132,6 +132,12 @@ module.exports = {
 			}
 		}
 	},
+    externals:{
+       'react':'var React',
+       'react-dom':'var ReactDOM',
+       'moment':'moment',
+       'antd':'var antd',
+   },
     plugins: [
         new webpack.DefinePlugin({
             // 'process.env': {
