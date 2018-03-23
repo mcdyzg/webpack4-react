@@ -13,6 +13,7 @@
 
 - 可使用动态import或bundle-loader(require.ensure)进行页面异步加载
 - 使用react-hot-loader实现热加载
+- 请求模块封装fetch，并支持添加请求前后的回调事件。
 
 babel配置
 
