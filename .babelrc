@@ -32,10 +32,11 @@
             "polyfill": false,
             "regenerator": true,
             "moduleName": "babel-runtime"
-        }],
-        ["import", {
+        }]
+        /* 因为将antd externals出去了，所以此处不要在按需加载，否则会把antd/lib/..下的包打进来 */
+        /* ["import", {
           "libraryName": "antd",
           "style": true,
-        }]
+        }] */
     ]
 }
