@@ -3,9 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        app: './src/app/index.js'
-    },
+    entry: [
+        // 配合antd使用的时候一定要在入口里加react-hot-loader,否则热加载会报错，不使用antd的话可以在此处不加
+        'react-hot-loader/patch',
+        './src/app/index.js'
+    ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
