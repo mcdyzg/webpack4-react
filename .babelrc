@@ -19,7 +19,7 @@
     },
     "plugins": [
         /* 装饰者模式 */
-        "transform-decorators",
+        "transform-decorators-legacy",
         /* 扩展运算符，包含在stage-3里 */
         "transform-object-rest-spread",
         /* 此插件为了使用动态import，可以使用babel-preset-stage-0或1或2替代，3不可 */
