@@ -29,5 +29,8 @@ export {
 // 故在此直接给出处理逻辑
 // ================================
 export const ACTION_HANDLERS = {
-  [ADD]: (state, { payload }) => state+payload, // payload is userData
+  [ADD]: (state, { payload }) => {
+      console.log('dispatch')
+      return state+payload
+  }, // payload is userData
 }
