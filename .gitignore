@@ -6,7 +6,6 @@ design/
 dist
 .idea/
 src/**/*.map
-docs/
 mock/
 # Packages #
 ############
@@ -36,4 +35,3 @@ mock/
 .Trashes
 ehthumbs.db
 Thumbs.db
-srcDemo
