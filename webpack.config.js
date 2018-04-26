@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+// webpack4加了速度没有明显提升
+// const HappyPack = require('happypack')
 
 module.exports = {
 	entry: {
@@ -52,6 +54,7 @@ module.exports = {
 			{
 				test: /\.js[x]?$/,
 				use: 'babel-loader',
+				// use: 'happypack/loader?id=jsx',
 				exclude: [/node_modules/],
 			},
 			{
@@ -109,5 +112,14 @@ module.exports = {
 		// 以下两个配合react-hot-loader实现热加载
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
+		// new HappyPack({
+		// 	id: 'jsx',
+		// 	use: [
+		// 		{
+		// 			path: 'babel-loader',
+		// 		},
+		// 	],
+		// 	threads: 4,
+		// }),
 	],
 }
