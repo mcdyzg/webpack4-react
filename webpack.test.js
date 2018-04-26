@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// 项目大的时候提升明显，项目小反而增加了打包时间
+const HappyPack = require('happypack')
 
 module.exports = {
 	entry: {
@@ -18,7 +20,8 @@ module.exports = {
 		rules: [
 			{
 				test: /\.js[x]?$/,
-				use: 'babel-loader',
+				// use: 'babel-loader',
+				use: 'happypack/loader?id=jsx',
 				exclude: [/node_modules/],
 			},
 			{
@@ -85,6 +88,15 @@ module.exports = {
 		new CleanWebpackPlugin(['dist']),
 		new HtmlWebpackPlugin({
 			template: 'src/template/index.html',
+		}),
+		new HappyPack({
+			id: 'jsx',
+			use: [
+				{
+					path: 'babel-loader',
+				},
+			],
+			threads: 4,
 		}),
 		// production环境下自动压缩,下面这行可以注释掉
 		// new UglifyJSPlugin(),
