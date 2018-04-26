@@ -58,7 +58,10 @@ module.exports = {
 				test: /\.(css|scss)$/,
 				use: [
 					'style-loader',
-					{ loader: 'css-loader', options: { importLoaders: 1 } },
+					{
+						loader: 'css-loader',
+						options: { importLoaders: 1, minimize: true },
+					},
 					// 'css-loader',
 					'postcss-loader',
 					'sass-loader',
@@ -69,7 +72,10 @@ module.exports = {
 				test: /\.less$/,
 				use: [
 					'style-loader',
-					'css-loader',
+					{
+						loader: 'css-loader',
+						options: { importLoaders: 1, minimize: true },
+					},
 					'postcss-loader',
 					// 'less-loader'
 					// less3x版本与按需加载报以下错误
