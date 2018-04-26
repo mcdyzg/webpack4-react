@@ -1,41 +1,52 @@
 {
-    "presets": [
-        ["env", {
-            "modules": false
-        }],
-        "react",
-        /* stage 2包含syntax-dynamic-import和transform-class-properties */
-        /* "stage-2", */
-        /* stage 3包含transform-object-rest-spread和transform-async-generator-functions */
-        /* "stage-3", */
-        /* 包含1,2,3 */
-        /* "stage-0", */
-    ],
-    "env": {
-        /* 此处的development配合package.json里使用NODE_ENV=production就不会将babel打入包了 */
-        "development": {
-            "plugins": ["react-hot-loader/babel"]
-        }
-    },
-    "plugins": [
-        /* 装饰者模式 */
-        "transform-decorators-legacy",
-        /* 扩展运算符，包含在stage-3里 */
-        "transform-object-rest-spread",
-        /* 此插件为了使用动态import，可以使用babel-preset-stage-0或1或2替代，3不可 */
-        "syntax-dynamic-import",
-        /* 此插件为了使用class的静态属性，可使用babel-preset-stage-0或1或2替代，3不可 */
-        "transform-class-properties",
-        /* 为了兼容async函数，提供regeneratorRuntime函数 */
-        ["transform-runtime", {
-            "helpers": false,
-            "polyfill": false,
-            "regenerator": true,
-            "moduleName": "babel-runtime"
-        }],
-        ["import", {
-          "libraryName": "antd",
-          "style": true,
-        }]
-    ]
+	"presets": [
+		[
+			"env",
+			{
+				"modules": false
+			}
+		],
+		"react"
+		/* stage 2包含syntax-dynamic-import和transform-class-properties */
+		/* "stage-2", */
+		/* stage 3包含transform-object-rest-spread和transform-async-generator-functions */
+		/* "stage-3", */
+		/* 包含1,2,3 */
+		/* "stage-0", */
+	],
+	"env": {
+		/* 此处的development配合package.json里使用NODE_ENV=production就不会将babel打入包了 */
+		"development": {
+			"plugins": ["react-hot-loader/babel"]
+		}
+	},
+	"plugins": [
+		/* 装饰者模式 */
+		"transform-decorators-legacy",
+		/* 扩展运算符，包含在stage-3里 */
+		"transform-object-rest-spread",
+		/* 此插件为了使用动态import，可以使用babel-preset-stage-0或1或2替代，3不可 */
+		"syntax-dynamic-import",
+		/* 此插件为了使用class的静态属性，可使用babel-preset-stage-0或1或2替代，3不可 */
+		"transform-class-properties",
+		/* 为了兼容async函数，提供regeneratorRuntime函数 */
+		[
+			"transform-runtime",
+			{
+				"helpers": false,
+				"polyfill": false,
+				"regenerator": true,
+				"moduleName": "babel-runtime"
+			}
+		],
+		[
+			"import",
+			{
+				"libraryName": "antd",
+				"libraryDirectory": "es",
+				// antd增加了sideEffects功能，如果从lib中引用css打正式包的时候不会打入，需要指定从es文件夹引入css。issue: https://github.com/ant-design/ant-design/pull/10217
+				"style": true
+			}
+		]
+	]
 }
