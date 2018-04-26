@@ -13,7 +13,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/',
 	},
-	mode: 'production',
+	mode: 'development',
 	module: {
 		rules: [
 			{
@@ -79,8 +79,8 @@ module.exports = {
 			//     NODE_ENV: '"production"'  // 制定了mode=production,默认NODE_ENV=production
 			// },
 			__LOCAL__: false,
-			__TEST__: false,
-			__PRO__: true,
+			__TEST__: true,
+			__PRO__: false,
 		}),
 		new CleanWebpackPlugin(['dist']),
 		new HtmlWebpackPlugin({
