@@ -29,7 +29,8 @@
 			{
 				"libraryName": "antd",
 				"libraryDirectory": "es",
-				// antd增加了sideEffects功能，如果从lib中引用css打正式包的时候不会打入，需要指定从es文件夹引入css。issue: https://github.com/ant-design/ant-design/pull/10217
+				/* antd增加了sideEffects功能，如果从lib中引用css打正式包的时候不会打入，需要指定从es文件夹引入css。issue: https://github.com/ant-design/ant-design/pull/10217. */
+				/* 从3.4.4开始，libraryDirectory指定lib和es都可，已修复 */
 				"style": true
 			}
 		]
